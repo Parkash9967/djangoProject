@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<h1> Welcome to my Django project</h1>
+<h2>Please click the student link</h2>
+<a href="{% url 'students' %}">students</a>
+
+<div>
+<form action="/update_edit/{{ stud.id }}/">
+ {% csrf_token %}
+    <table>
+         <thead>
+      <tr>
+        <th>Student ID</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+          <th>email</th>
+      </tr>
+    </thead>
+        <tbody>
+	{% for stud in data %}
+      <tr>
+        <td>{{stud.id}}</td>
+        <td>{{stud.firstname}}</td>
+		<td>{{stud.lastname}}</td>
+		<td>{{stud.email}}</td>
+        <td><a href="{% url 'upd-stud' stud.id  %}"> Update</a></td>
+      <td><a href="{% url 'delete' stud.id  %}"> delete</a></td>
+      </tr>
+	  {% endfor %}
+	</tbody>
+    </table>
+</form>
+</div>
+<a href="{% url 'say_hello' %}">back</a>
+</body>
+</html>

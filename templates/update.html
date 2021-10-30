@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	{% for stud in data %}
+
+<form action="/update_edit/{{ stud.id }}/" method='POST'>
+     {% csrf_token %}
+    <input type="hidden" name="id" value="{{ stud.id }}">
+  <label for="fname">First name:</label><br>
+  <input type="text"  name="fname" value="{{stud.firstname}}"  required><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text"  name="lname" value="{{stud.lastname}}"  required><br><br>
+  <label for="email">Email:</label><br>
+  <input type="email" name="email" value="{{stud.email}}"  required><br><br>
+  <button type="submit" class="btn btn-primary btn-sm" value=""> update</button>
+</form>
+	  {% endfor %}
+
+</body>
+</html>
