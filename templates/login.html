@@ -5,10 +5,21 @@
     <title>form</title>
 </head>
 <body>
-<form method="post">
+<form method="post" action="">
     {% csrf_token %}
-    {{ form }}
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password" placeholder="password">
     <input type="submit"  value="Sign In">
 </form>
+<div>
+    {% for message in messages  %}
+<p> {{ message }}</p>
+{% endfor %}
+</div>
+<p>
+    sign up if u dont have account
+</p>
+
+<a href="{% url 'register' %}">sign up</a>
 </body>
 </html>

@@ -28,8 +28,8 @@
         <td>{{stud.firstname}}</td>
 		<td>{{stud.lastname}}</td>
 		<td>{{stud.email}}</td>
-        <td><a href="{% url 'upd-stud' stud.id  %}"> Update</a></td>
-      <td><a href="{% url 'delete' stud.id  %}"> delete</a></td>
+        <td><a  href="{% url 'upd-stud' stud.id  %}"> Update</a></td>
+      <td><a onclick=" return confirm('are you sure ?')" href="{% url 'delete' stud.id  %}"> delete</a></td>
       </tr>
 	  {% endfor %}
 	</tbody>
@@ -37,5 +37,11 @@
 </form>
 </div>
 <a href="{% url 'say_hello' %}">back</a>
+<div>
+    <h4>Hello {{ request.user }}</h4>
+</div>
+<div>
+<a href="{% url 'logout' %}">Log Out</a>
+</div>
 </body>
 </html>
