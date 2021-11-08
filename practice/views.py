@@ -1,6 +1,6 @@
 from practice import models
 from django.http import HttpResponse
-from practice.models import Students
+from practice.models import Students, Scholarships
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
@@ -57,4 +57,9 @@ def update_edit(request, id):
 @login_required(login_url='login')
 def delete(request, id):
     Students.objects.filter(id=id).delete()
-    return render(request, "index.html")
+    return redirect('say_hello')
+
+@login_required(login_url='login')
+def showData(request):
+    data = Scholarships.objects.all()
+    return render(request, 'scholarships.html', {'data': data})
